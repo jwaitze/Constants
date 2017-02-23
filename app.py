@@ -1,7 +1,7 @@
 from decimal import *
 getcontext().prec = 100
 
-# Gregory-Leibniz Series
+# Gregory-Leibniz Series pi Approximation
 def pi_gls(o=10**6):
     q_pi = 0
     for i, n in enumerate(range(1, int(o*2), 2)):
@@ -24,7 +24,7 @@ def factorial_(*args):
         x *= n
     return x
 
-# Nilakantha Series
+# Nilakantha Series pi Approximation
 def pi_ns(o=10**6):
     pi = 3
     for i, n in enumerate(range(2, 2+o*2, 2)):
@@ -32,19 +32,19 @@ def pi_ns(o=10**6):
         pi = pi+r if i % 2 == 0 else pi-r
     return pi
 
-# Binomial Expansion
+# Binomial Expansion pi Approximation
 def e_be(n=10**12):
     return (1+(1/Decimal(n)))**n
 
-# Another Expansion, small n
+# Another Expansion, small n e Approximation
 def e_se(n=10**-12):
     return (1+Decimal(n))**Decimal(1/n)
 
-# Newton's Series
+# Newton's Series e Approximation
 def e_ns(o=10**3):
     return sum([Decimal(1/factorial_(i)) for i in range(o)])
 
-# Brothers' Formulae
+# Brothers' Formulae e Approximation
 def e_bf(o=7):
     return sum([(2*Decimal(i)+2)/factorial_(2*i+1) for i in range(o)])
 
@@ -63,6 +63,10 @@ def b_sqrt(n):
 def pythagoras_constant():
     return b_sqrt(2)
 
+# Algebraic form of phi
+def phi_a():
+    return (1+b_sqrt(5))/2
+
 print('pi, Gregory-Leibniz Series:', pi_gls())
 print('pi, Nilakantha Series:', pi_ns())
 print('e, Newton\'s Series:', e_ns())
@@ -70,3 +74,4 @@ print('e, Binomial Expansion:', e_be())
 print('e, Small n Expansion:', e_se())
 print('e, Brother\'s Formulae:', e_bf())
 print('Pythagoras Constant, Babylonian Square Root Algorithm:', pythagoras_constant())
+print('phi, Algebraic Method:', phi_a())
