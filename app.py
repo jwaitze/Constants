@@ -37,11 +37,22 @@ def e_be(*args):
     n = 10**12 if len(args) < 1 else args[0]
     return (1+(1/Decimal(n)))**n
 
+# Another Expansion, small n
+def e_se(*args):
+    n = Decimal(10**-12) if len(args) < 1 else Decimal(args[0])
+    return (1+n)**(1/n)
+
 # Newton's Series
-def e_ns(o):
+def e_ns(o=10**3):
     return sum([Decimal(1/factorial_(i)) for i in range(o)])
+
+# Brothers' Formulae
+def e_bf(o=7):
+    return sum([(2*i+2)/factorial_(2*i+1) for i in range(o)])
 
 print('pi, Gregory-Leibniz Series:', pi_gls(10**6))
 print('pi, Nilakantha Series:', pi_ns(10**6))
-print('e, Newton\'s Series:', e_ns(10**3))
+print('e, Newton\'s Series:', e_ns())
 print('e, Binomial Expansion:', e_be())
+print('e, Small n Expansion:', e_se())
+print('e, Brother\'s Formulae:', e_bf())
