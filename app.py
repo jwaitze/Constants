@@ -48,9 +48,25 @@ def e_ns(o=10**3):
 def e_bf(o=7):
     return sum([(2*Decimal(i)+2)/factorial_(2*i+1) for i in range(o)])
 
+# Babylonian Square Root Algorithm
+def b_sqrt(n):
+    if n == 0:
+        return 0
+    a = Decimal(n)/2
+    b = a+1
+    while a != b:
+        b = a
+        a = (a + n/a)/2
+    return a
+
+# Square Root of 2
+def pythagoras_constant():
+    return b_sqrt(2)
+
 print('pi, Gregory-Leibniz Series:', pi_gls())
 print('pi, Nilakantha Series:', pi_ns())
 print('e, Newton\'s Series:', e_ns())
 print('e, Binomial Expansion:', e_be())
 print('e, Small n Expansion:', e_se())
 print('e, Brother\'s Formulae:', e_bf())
+print('Pythagoras Constant, Babylonian Square Root Algorithm:', pythagoras_constant())
